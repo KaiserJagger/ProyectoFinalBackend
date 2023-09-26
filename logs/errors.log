@@ -88,3 +88,6 @@ info: Server Up on http://localhost:8080/api/products
 debug: DB production connected!
 info: Server Up on http://localhost:8080/api/products
 
+debug: DB production connected!
+info: Server Up on http://localhost:8080/api/products
+
