@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Create Product</title>
+  <!-- Enlaza los estilos CSS de Bootstrap -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css">
+</head>
+<body>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6">
+        <a href="/api/products" class="btn btn-primary">Products</a>
+        |
+        <a href="/api/products/manager" class="btn btn-primary">Manage products</a>
+      </div>
+      <div class="col-md-6 text-end">
+        <form action="/api/session/logout" method="GET">
+          <button type="submit" class="btn btn-danger">Logout</button>
+        </form>
+      </div>
+    </div>
+
+    <h1 class="mt-4">Create Product</h1>
+
+    <form action="/api/products" method="post" class="mt-4">
+      <div class="mb-3">
+        <label for="title" class="form-label">Title:</label>
+        <input type="text" id="title" name="title" class="form-control" placeholder="Title" required>
+      </div>
+      <div class="mb-3">
+        <label for="description" class="form-label">Description:</label>
+        <input type="text" id="description" name="description" class="form-control" placeholder="Description" required>
+      </div>
+      <div class="mb-3">
+        <label for="price" class="form-label">Price:</label>
+        <input type="number" id="price" name="price" class="form-control" placeholder="Price" required>
+      </div>
+      <div class="mb-3">
+        <label>Status:</label>
+        <div class="form-check form-check-inline">
+          <input type="radio" id="statusFalse" name="status" value="false" class="form-check-input">
+          <label for="statusFalse" class="form-check-label">False</label>
+        </div>
+        <div class="form-check form-check-inline">
+          <input type="radio" id="statusTrue" name="status" value="true" class="form-check-input" checked>
+          <label for="statusTrue" class="form-check-label">True</label>
+        </div>
+      </div>
+      <div class="mb-3">
+        <label for="code" class="form-label">Code:</label>
+        <input type="text" id="code" name="code" class="form-control" placeholder="Unique code" required>
+      </div>
+      <div class="mb-3">
+        <label for="stock" class="form-label">Stock:</label>
+        <input type="number" id="stock" name="stock" class="form-control" placeholder="Quantity of stock" required>
+      </div>
+      <div class="mb-3">
+        <label for="category" class="form-label">Category:</label>
+        <input type="text" id="category" name="category" class="form-control" placeholder="Category" required>
+      </div>
+      <div class="mb-3">
+        <label for="thumbnail" class="form-label">Thumbnail:</label>
+        <input type="text" id="thumbnail" name="thumbnail" class="form-control" placeholder="Image URL" required>
+      </div>
+      <button type="submit" class="btn btn-success">Register</button>
+    </form>
+  </div>
+
+  <!-- Incluye los scripts de Bootstrap y jQuery (si es necesario) -->
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.min.js"></script>
+</body>
+</html>

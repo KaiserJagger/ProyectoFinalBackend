@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mockin Products</title>
+  <!-- Enlaza los estilos CSS de Bootstrap -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css">
+</head>
+<body>
+  <div class="container">
+    <form action="/api/products/mockingproducts" method="GET" class="mb-3">
+      <div class="input-group">
+        <input type="text" name="query" value="{{query}}" class="form-control" placeholder="Search...">
+        <input type="hidden" name="limit" value="{{limit}}">
+        <input type="hidden" name="sort" value="{{sort}}">
+        <button type="submit" class="btn btn-primary">Search</button>
+        <a href="/api/products/mockingproducts" class="btn btn-primary">Remove filters</a>
+      </div>
+    </form>
+    
+    <form action="/api/session/logout" method="GET" class="mb-4">
+      <h1>Welcome, {{userEmail}}!</h1>
+      <p>Role: {{userRole}}</p>
+      <button type="submit" class="btn btn-danger">Logout</button>
+    </form>
+    
+    <div>
+      {{#each mockingProducts.docs}}
+        <div class="mb-3">
+          <h2>{{this.title}}</h2>
+          <p>{{this.description}}</p>
+          <p>{{this.category}}</p>
+          <p>Stock: {{this.stock}}</p>
+          <h3>Price: $ {{this.price}}</h3>
+          <hr>
+        </div>
+      {{/each}}
+    </div>
+
+    {{#if mockingProducts.hasPrevPage}}
+      <a href="/api/products/mockingproducts?page={{mockingProducts.prevPage}}&limit={{limit}}&sort={{sort}}&query={{query}}" class="btn btn-primary">Previous page</a>
+    {{/if}}
+
+    {{#if mockingProducts.hasNextPage}}
+      <a href="/api/products/mockingproducts?page={{mockingProducts.nextPage}}&limit={{limit}}&sort={{sort}}&query={{query}}" class="btn btn-primary">Next page</a>
+    {{/if}}
+  </div>
+
+  <!-- Incluye los scripts de Bootstrap y jQuery (si es necesario) -->
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.min.js"></script>
+</body>
+</html>

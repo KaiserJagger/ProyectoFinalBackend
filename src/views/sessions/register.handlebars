@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sign up</title>
+  <!-- Enlaza los estilos CSS de Bootstrap -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css">
+</head>
+<body>
+  <div class="container mt-4">
+    <h1>Sign up</h1>
+
+    <form action="/api/session/register" method="post">
+      <div class="mb-3">
+        <label for="firstName" class="form-label">First Name:</label>
+        <input type="text" class="form-control" id="firstName" name="first_name">
+      </div>
+      <div class="mb-3">
+        <label for="lastName" class="form-label">Last Name:</label>
+        <input type="text" class="form-control" id="lastName" name="last_name">
+      </div>
+      <div class="mb-3">
+        <label for="email" class="form-label">Email:</label>
+        <input type="text" class="form-control" id="email" name="email">
+      </div>
+      <div class="mb-3">
+        <label for="age" class="form-label">Age:</label>
+        <input type="text" class="form-control" id="age" name="age">
+      </div>
+      <div class="mb-3">
+        <label for="password" class="form-label">Password:</label>
+        <input type="password" class="form-control" id="password" name="password">
+      </div>
+      <div class="mb-3">
+        <label for="role" class="form-label">Role:</label>
+        <select class="form-select" id="role" name="role">
+          <option value="user">User</option>
+          <option value="premium">Premium</option>
+        </select>
+      </div>
+      <button type="submit" class="btn btn-primary">Sign up</button>
+    </form>
+  </div>
+
+  <hr />
+
+  <div class="container mt-4">
+    Do you already have an account?
+    <a href="/api/session/login" class="btn btn-secondary">Login</a>
+  </div>
+
+  <!-- Incluye los scripts de Bootstrap y jQuery (si es necesario) -->
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.min.js"></script>
+</body>
+</html>

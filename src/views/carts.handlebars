@@ -1,0 +1,70 @@
+<html>
+<head>
+  <title>Cart</title>
+  <!-- Enlaza los estilos CSS de Bootstrap -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css">
+</head>
+<body>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6">
+        <a href="/api/products" class="btn btn-primary">Products</a>
+      </div>
+      <div class="col-md-6">
+        <form action="/api/session/logout" method="GET" class="float-md-end">
+          <button type="submit" class="btn btn-danger">Logout</button>
+        </form>
+      </div>
+    </div>
+
+    <h1 class="mt-3">Cart</h1>
+
+    {{#if message}}
+    <div class="alert alert-danger">
+      {{message}}
+    </div>
+    {{/if}}
+
+    {{#each cart}}
+    <div class="mt-3">
+      <h2>Cart ID: {{_id}}</h2>
+      <ul class="list-group">
+        {{#each products}}
+        <li class="list-group-item">
+          <h3>{{productId.title}}</h3>
+          <p>Product ID: {{productId._id}}</p>
+          <p>Quantity: {{quantity}}</p>
+          <p>Stock: {{productId.stock}}</p>
+
+          <!-- Formulario para modificar la cantidad -->
+          <form action="/api/carts/update-quantity" method="POST" class="mb-2">
+            <input type="hidden" name="cartId" value="{{../_id}}">
+            <input type="hidden" name="productId" value="{{this.productId._id}}">
+            <div class="input-group">
+              <input type="number" name="quantity" value="{{this.quantity}}" class="form-control">
+              <button type="submit" class="btn btn-primary">Update quantity</button>
+            </div>
+          </form>
+
+          <!-- Formulario para eliminar el producto -->
+          <form action="/api/carts/remove-from-cart" method="POST">
+            <input type="hidden" name="cartId" value="{{../_id}}">
+            <input type="hidden" name="productId" value="{{this.productId._id}}">
+            <button type="submit" class="btn btn-danger">Remove product</button>
+          </form>
+        </li>
+        {{/each}}
+      </ul>
+    </div>
+    {{/each}}
+    
+    <form action="/api/carts/purchase" method="GET" class="mt-3">
+      <button type="submit" class="btn btn-success">Purchase</button>
+    </form>
+  </div>
+
+  <!-- Incluye los scripts de Bootstrap y jQuery (si es necesario) -->
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.min.js"></script>
+</body>
+</html>

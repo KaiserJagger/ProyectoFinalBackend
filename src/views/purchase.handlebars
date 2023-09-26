@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Purchase Receipt</title>
+  <!-- Enlaza los estilos CSS de Bootstrap -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css">
+</head>
+<body>
+  <div class="container mt-4">
+    <h1>Purchase Receipt</h1>
+
+    <div class="card">
+      <div class="card-body">
+        <h2 class="card-title">Code: {{ticket.code}}</h2>
+        <h3 class="card-subtitle mb-2 text-muted">Purchaser: {{ticket.purchaser}}</h3>
+        <h2 class="card-text">Total amount: $ {{ticket.amount}}</h2>
+        <p class="card-text">Date: {{ticket.purchase_datetime}}</p>
+      </div>
+    </div>
+
+    <div class="mt-4">
+      <h3>Thank you for your purchase!</h3>
+      <a href="/api/products" class="btn btn-primary">Home</a>
+    </div>
+  </div>
+
+  <!-- Incluye los scripts de Bootstrap y jQuery (si es necesario) -->
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.min.js"></script>
+</body>
+</html>

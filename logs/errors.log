@@ -1,0 +1,90 @@
+fatal: Error when trying to start the server.
+ ATLAS_UR is not defined {"stack":"ReferenceError: ATLAS_URL is not defined\n    at ServerUp (file:///D:/Coding/backend/desafio9/src/dto/persistanceFactory.js:30:32)\n    at file:///D:/Coding/backend/desafio9/src/app.js:65:1\n    at ModuleJob.run (node:internal/modules/esm/module_job:193:25)\n    at async Promise.all (index 0)\n    at async ESMLoader.import (node:internal/modules/esm/loader:526:24)\n    at async loadESM (node:internal/process/esm_loader:91:5)\n    at async handleMainPromise (node:internal/modules/run_main:65:12)"}
+error: An error occurred while removing the product from the cart producId is not defined {"stack":"ReferenceError: producId is not defined\n    at removeFromCart (file:///D:/Coding/backend/desafio9/src/controllers/carts/POST/removeFromCart.js:8:46)\n    at Layer.handle [as handle_request] (D:\\Coding\\backend\\desafio9\\node_modules\\express\\lib\\router\\layer.js:95:5)\n    at next (D:\\Coding\\backend\\desafio9\\node_modules\\express\\lib\\router\\route.js:144:13)\n    at Route.dispatch (D:\\Coding\\backend\\desafio9\\node_modules\\express\\lib\\router\\route.js:114:3)\n    at Layer.handle [as handle_request] (D:\\Coding\\backend\\desafio9\\node_modules\\express\\lib\\router\\layer.js:95:5)\n    at D:\\Coding\\backend\\desafio9\\node_modules\\express\\lib\\router\\index.js:284:15\n    at Function.process_params (D:\\Coding\\backend\\desafio9\\node_modules\\express\\lib\\router\\index.js:346:12)\n    at next (D:\\Coding\\backend\\desafio9\\node_modules\\express\\lib\\router\\index.js:280:10)\n    at Function.handle (D:\\Coding\\backend\\desafio9\\node_modules\\express\\lib\\router\\index.js:175:3)\n    at router (D:\\Coding\\backend\\desafio9\\node_modules\\express\\lib\\router\\index.js:47:12)"}
+error: An error occurred while removing the product from the cart
+ producId is not defined {"stack":"ReferenceError: producId is not defined\n    at removeFromCart (file:///D:/Coding/backend/desafio9/src/controllers/carts/POST/removeFromCart.js:8:46)\n    at Layer.handle [as handle_request] (D:\\Coding\\backend\\desafio9\\node_modules\\express\\lib\\router\\layer.js:95:5)\n    at next (D:\\Coding\\backend\\desafio9\\node_modules\\express\\lib\\router\\route.js:144:13)\n    at Route.dispatch (D:\\Coding\\backend\\desafio9\\node_modules\\express\\lib\\router\\route.js:114:3)\n    at Layer.handle [as handle_request] (D:\\Coding\\backend\\desafio9\\node_modules\\express\\lib\\router\\layer.js:95:5)\n    at D:\\Coding\\backend\\desafio9\\node_modules\\express\\lib\\router\\index.js:284:15\n    at Function.process_params (D:\\Coding\\backend\\desafio9\\node_modules\\express\\lib\\router\\index.js:346:12)\n    at next (D:\\Coding\\backend\\desafio9\\node_modules\\express\\lib\\router\\index.js:280:10)\n    at Function.handle (D:\\Coding\\backend\\desafio9\\node_modules\\express\\lib\\router\\index.js:175:3)\n    at router (D:\\Coding\\backend\\desafio9\\node_modules\\express\\lib\\router\\index.js:47:12)"}
+fatal: Error when trying to start the server.
+ ATLAS_D_NAME is not defined {"stack":"ReferenceError: ATLAS_DB_NAME is not defined\n    at ServerUp (file:///D:/Coding/backend/refactoring/src/dto/persistanceFactory.js:31:19)\n    at file:///D:/Coding/backend/refactoring/src/app.js:84:1\n    at ModuleJob.run (node:internal/modules/esm/module_job:193:25)\n    at async Promise.all (index 0)\n    at async ESMLoader.import (node:internal/modules/esm/loader:526:24)\n    at async loadESM (node:internal/process/esm_loader:91:5)\n    at async handleMainPromise (node:internal/modules/run_main:65:12)"}
+fatal: Error when trying to start the server.
+ The `uri` parameter to `openUri()` must be a string, got "undefined". Make sure the first parameter to `mongoose.connect()` or `mongoose.createConnection()` is a string. {"stack":"MongooseError: The `uri` parameter to `openUri()` must be a string, got \"undefined\". Make sure the first parameter to `mongoose.connect()` or `mongoose.createConnection()` is a string.\n    at NativeConnection.createClient (C:\\Users\\nicoc\\Desktop\\ecommerce\\Proyecto-martin\\backend-PF\\node_modules\\mongoose\\lib\\drivers\\node-mongodb-native\\connection.js:206:11)\n    at NativeConnection.openUri (C:\\Users\\nicoc\\Desktop\\ecommerce\\Proyecto-martin\\backend-PF\\node_modules\\mongoose\\lib\\connection.js:755:34)\n    at Mongoose.connect (C:\\Users\\nicoc\\Desktop\\ecommerce\\Proyecto-martin\\backend-PF\\node_modules\\mongoose\\lib\\index.js:404:15)\n    at ServerUp (file:///C:/Users/nicoc/Desktop/ecommerce/Proyecto-martin/backend-PF/src/dto/persistanceFactory.js:30:24)\n    at file:///C:/Users/nicoc/Desktop/ecommerce/Proyecto-martin/backend-PF/src/app.js:88:1\n    at ModuleJob.run (node:internal/modules/esm/module_job:194:25)"}
+fatal: Error when trying to start the server.
+ ATLAS_DB_NAME is not defined {"stack":"ReferenceError: ATLAS_DB_NAME is not defined\n    at ServerUp (file:///C:/Users/nicoc/Desktop/ecommerce/Proyecto-martin/backend-PF/src/dto/persistanceFactory.js:30:18)\n    at file:///C:/Users/nicoc/Desktop/ecommerce/Proyecto-martin/backend-PF/src/app.js:88:1\n    at ModuleJob.run (node:internal/modules/esm/module_job:194:25)"}
+error: User not found - /forgot-password
+fatal: Error when trying to start the server.
+ app is not defined {"stack":"ReferenceError: app is not defined\n    at connectToDatabase (file:///C:/Users/nicoc/Desktop/ecommerce/ProyectoFinal-backend/src/dto/persistanceFactory.js:20:5)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)"}
+fatal: Error when trying to start the server.
+ app is not defined {"stack":"ReferenceError: app is not defined\n    at connectToDatabase (file:///C:/Users/nicoc/Desktop/ecommerce/ProyectoFinal-backend/src/dto/persistanceFactory.js:20:5)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)"}
+fatal: Error when trying to start the server for PROD.
+ app is not defined {"stack":"ReferenceError: app is not defined\n    at connectToDatabase (file:///C:/Users/nicoc/Desktop/ecommerce/ProyectoFinal-backend/src/dto/persistanceFactory.js:31:5)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at async startServer (file:///C:/Users/nicoc/Desktop/ecommerce/ProyectoFinal-backend/src/dto/persistanceFactory.js:65:3)"}
+fatal: Error when trying to start the server for PROD.
+ app is not defined {"stack":"ReferenceError: app is not defined\n    at connectToDatabase (file:///C:/Users/nicoc/Desktop/ecommerce/ProyectoFinal-backend/src/dto/persistanceFactory.js:31:5)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at async startServer (file:///C:/Users/nicoc/Desktop/ecommerce/ProyectoFinal-backend/src/dto/persistanceFactory.js:65:3)"}
+debug: DB production connected!
+info: Server Up on http://localhost:8080/products
+
+debug: DB production connected!
+info: Server Up on http://localhost:8080/products
+
+http: GET /session/register
+info: POST /session/register success
+info: Login success
+http: GET /api/products
+debug: DB production connected!
+info: Server Up on http://localhost:8080/products
+
+http: GET /api/products
+http: GET /api/carts
+debug: DB production connected!
+info: Server Up on http://localhost:8080/products
+
+http: GET /api/users
+http: GET /api/users
+http: GET /api/products
+http: GET /api/products
+http: GET /api/users
+info: Changed role of user to premium - (nicocabj1234@gmail.com)
+http: GET /api/users
+http: GET /api/products
+http: GET /create
+http: GET /api/products
+http: GET /api/products
+info: Product 650c5799ab91cd58053c31d9 added to cart
+http: GET /api/products
+info: Product 650c5799ab91cd58053c31dc added to cart
+http: GET /api/products
+http: GET /api/carts
+info: 650c5799ab91cd58053c31d9 has been removed from the cart
+http: GET /api/products
+http: GET /api/carts
+info: 650c5799ab91cd58053c31dc has been removed from the cart
+http: GET /api/products
+info: Logout success
+info: Login success
+http: GET /api/products
+debug: DB production connected!
+info: Server Up on http://localhost:8080/products
+
+http: GET /api/products
+http: GET /api/products
+http: GET /api/products
+http: GET /api/products
+info: Logout success
+debug: DB production connected!
+info: Server Up on http://localhost:8080/api/products
+
+http: GET /api/products
+info: Logout success
+info: Login success
+http: GET /api/products
+http: GET /api/products
+info: Logout success
+http: GET /session/register
+info: POST /session/register success
+info: POST /session/register success
+info: Login success
+http: GET /api/products
+debug: DB production connected!
+info: Server Up on http://localhost:8080/api/products
+
+debug: DB production connected!
+info: Server Up on http://localhost:8080/api/products
+

@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Products</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css">
+</head>
+<body>
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container">
+      <form class="d-flex" action="/api/products" method="GET">
+        <input
+          class="form-control me-2"
+          type="text"
+          name="query"
+          value="{{query}}"
+          placeholder="Search..."
+        />
+        <input type="hidden" name="limit" value="{{limit}}" />
+        <input type="hidden" name="sort" value="{{sort}}" />
+        <button class="btn btn-outline-success" type="submit">Search</button>
+      </form>
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="/products">Remove filters</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/api/carts">Cart</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/api/products/create">Create product</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/api/products/manager">Manage products</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/api/users">Admin dashboard</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Bienvenida y botón de logout -->
+  <div class="container mt-4">
+    <form action="/api/session/logout" method="GET">
+      <h1>Welcome, <a href="/api/user">{{userEmail}}!</a></h1>
+      <p>Role: {{userRole}}</p>
+      <a class="btn btn-primary" href="/api/user">My account</a>
+      <button class="btn btn-danger" type="submit">Logout</button>
+    </form>
+  </div>
+
+  <!-- Lista de productos -->
+  <div class="container mt-4">
+    {{#each products.docs}}
+      <div class="card mb-3">
+        <div class="card-body">
+          <h2 class="card-title">{{this.title}}</h2>
+          <p class="card-text">{{this.description}}</p>
+          <p class="card-text">{{this.category}}</p>
+          <p class="card-text">Stock: {{this.stock}}</p>
+          <h3 class="card-text">Price: $ {{this.price}}</h3>
+          <p class="card-text">Owner: {{this.owner}}</p>
+
+          <!-- Formulario para agregar al carrito -->
+          <form action="/api/carts/add-to-cart" method="POST">
+            <input type="hidden" name="productId" value="{{this._id}}" />
+            <button class="btn btn-success" type="submit">Add to cart</button>
+          </form>
+
+          <!-- Formulario para eliminar del carrito -->
+          <form action="/api/carts/remove-from-cart" method="POST">
+            <input type="hidden" name="productId" value="{{this._id}}" />
+            <button class="btn btn-danger" type="submit">Remove from cart</button>
+          </form>
+        </div>
+      </div>
+    {{/each}}
+  </div>
+
+  <!-- Paginación -->
+  <div class="container mt-4">
+    <nav aria-label="Page navigation">
+      <ul class="pagination justify-content-center">
+        {{#if products.hasPrevPage}}
+          <li class="page-item">
+            <a
+              class="page-link"
+              href="/api/products?page={{products.prevPage}}&limit={{limit}}&sort={{sort}}&query={{query}}"
+            >Previous page</a>
+          </li>
+        {{/if}}
+        {{#if products.hasNextPage}}
+          <li class="page-item">
+            <a
+              class="page-link"
+              href="/api/products?page={{products.nextPage}}&limit={{limit}}&sort={{sort}}&query={{query}}"
+            >Next page</a>
+          </li>
+        {{/if}}
+      </ul>
+    </nav>
+  </div>
+
+  <!-- Incluye los scripts de Bootstrap y jQuery (si es necesario) -->
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.min.js"></script>
+</body>
+</html>

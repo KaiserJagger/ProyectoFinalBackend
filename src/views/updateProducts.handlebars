@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Update Product</title>
+  <!-- Enlaza los estilos CSS de Bootstrap -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css">
+</head>
+<body>
+  <div class="container mt-4">
+    <h1>Update Product</h1>
+    <a href="/api/products/manager" class="btn btn-primary">Manager</a>
+
+    <div class="mt-4">
+      <h2>Title: {{this.title}}</h2>
+      <p>Description: {{this.description}}</p>
+      <p>Category: {{this.category}}</p>
+      <p>Stock: {{this.stock}}</p>
+      <p>Price: $ {{this.price}}</p>
+      <p>Owner: {{this.owner}}</p>
+    </div>
+    <hr />
+
+    <form action="/api/products/update-products/{{this._id}}" method="POST">
+      <div class="mb-3">
+        <label for="description" class="form-label">Description:</label>
+        <textarea
+          class="form-control"
+          name="description"
+          id="description"
+          rows="3"
+        >{{this.description}}</textarea>
+      </div>
+      <div class="mb-3">
+        <label for="category" class="form-label">Category:</label>
+        <input
+          type="text"
+          class="form-control"
+          name="category"
+          id="category"
+          value="{{this.category}}"
+        />
+      </div>
+      <div class="mb-3">
+        <label for="stock" class="form-label">Stock:</label>
+        <input
+          type="number"
+          class="form-control"
+          name="stock"
+          id="stock"
+          value="{{this.stock}}"
+        />
+      </div>
+      <div class="mb-3">
+        <label for="price" class="form-label">Price:</label>
+        <input
+          type="number"
+          step="0.01"
+          class="form-control"
+          name="price"
+          id="price"
+          value="{{this.price}}"
+        />
+      </div>
+      <button type="submit" class="btn btn-success">Update</button>
+    </form>
+  </div>
+
+  <!-- Incluye los scripts de Bootstrap y jQuery (si es necesario) -->
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.min.js"></script>
+</body>
+</html>

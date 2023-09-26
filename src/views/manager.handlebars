@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Manager</title>
+  <!-- Enlaza los estilos CSS de Bootstrap -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css">
+</head>
+<body>
+  <div class="container">
+    <form action="/api/products" method="GET" class="mb-3">
+      <div class="input-group">
+        <input type="text" name="query" value="{{query}}" class="form-control" placeholder="Search...">
+        <input type="hidden" name="limit" value="{{limit}}">
+        <input type="hidden" name="sort" value="{{sort}}">
+        <button type="submit" class="btn btn-primary">Search</button>
+      </div>
+    </form>
+    
+    <div class="mb-4">
+      <a href="/api/products" class="btn btn-primary">Home</a>
+      |
+      <a href="/api/products" class="btn btn-primary">Remove filters</a>
+      |
+      <a href="/api/carts" class="btn btn-primary">Cart</a>
+      |
+      <a href="/api/products/create" class="btn btn-success">Create product</a>
+    </div>
+    
+    <form action="/api/session/logout" method="GET" class="mb-4">
+      <h1>Welcome, {{userEmail}}!</h1>
+      <p>Role: {{userRole}}</p>
+      <button type="submit" class="btn btn-danger">Logout</button>
+    </form>
+    
+    <div>
+      {{#each products.docs}}
+        <div class="mb-3">
+          <h2>{{this.title}}</h2>
+          <p>{{this.description}}</p>
+          <p>{{this.category}}</p>
+          <p>Stock: {{this.stock}}</p>
+          <h3>Price: $ {{this.price}}</h3>
+          <p>Owner: {{this.owner}}</p>
+
+          <form action="/api/products/update-product/{{this._id}}" method="GET">
+            <button type="submit" class="btn btn-primary">Update product</button>
+          </form>
+
+          <form action="/api/products/delete-product" method="POST">
+            <input type="hidden" name="productId" value="{{this._id}}" />
+            <button type="submit" class="btn btn-danger">Remove product</button>
+          </form>
+        </div>
+        <hr />
+      {{/each}}
+    </div>
+
+    {{#if products.hasPrevPage}}
+      <a href="/api/products?page={{products.prevPage}}&limit={{limit}}&sort={{sort}}&query={{query}}" class="btn btn-primary">Previous page</a>
+    {{/if}}
+
+    {{#if products.hasNextPage}}
+      <a href="/api/products?page={{products.nextPage}}&limit={{limit}}&sort={{sort}}&query={{query}}" class="btn btn-primary">Next page</a>
+    {{/if}}
+  </div>
+
+  <!-- Incluye los scripts de Bootstrap y jQuery (si es necesario) -->
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.min.js"></script>
+</body>
+</html>

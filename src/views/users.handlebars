@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Account</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css">
+</head>
+<body>
+  <div class="container mt-4">
+    <a href="/api/products" class="btn btn-primary">Home</a>
+    <h1>My Account</h1>
+    
+    <div class="mt-4">
+      <h2>Email: {{email}}</h2>
+      <h3>Name: {{name}}</h3>
+      <h3>Surname: {{surname}}</h3>
+      
+      <form action="/api/user/roles" method="POST">
+        <div class="mb-3">
+          <h3>Role: {{role}}</h3>
+          <label for="newRole" class="form-label">Change Role:</label>
+          <select name="newRole" id="newRole" class="form-select">
+            <option value="{{role}}">Select..</option>
+            <option value="user">User</option>
+            <option value="premium">Premium</option>
+          </select>
+          <input type="hidden" name="userId" value="{{_id}}">
+          <button type="submit" class="btn btn-success">Change Role</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Incluye los scripts de Bootstrap y jQuery (si es necesario) -->
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.min.js"></script>
+</body>
+</html>
