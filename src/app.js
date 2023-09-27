@@ -16,7 +16,7 @@ import loggerTest from "./routers/loggerTest.router.js";
 import usersRouter from "./routers/users.router.js";
 import usersManager from "./routers/usersManager.js";
 import initializePassport from "./config/passport.config.js";
-import { MONGO_DB_NAME, MONGO_URL } from "./config/config.js";
+import { MONGO_DB_NAME, MONGO_URL, SESSION_SECRET } from "./config/config.js";
 import { generateProductsMocking } from "./utils/utils.js";
 import { ServerUp } from "./dto/persistanceFactory.js";
 import { generateProducts } from "./utils/utils.js";
@@ -58,7 +58,7 @@ app.use(
       mongoUrl: MONGO_URL,
       dbName: MONGO_DB_NAME,
     }),
-    secret: '0cinco0uno',
+    secret: SESSION_SECRET,
     resave: true,
     saveUninitialized: true,
   })

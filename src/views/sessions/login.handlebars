@@ -12,7 +12,12 @@
   <div class="container mt-4">
     <h1>Login</h1>
 
-    {{#if error}}
+<div class="alert alert-danger" id="error-message" style="display: none;">
+  Credenciales incorrectas. Por favor, inténtalo de nuevo.
+</div>
+
+
+   {{#if error}}
       <div class="alert alert-danger">
         {{error}}
       </div>

@@ -105,7 +105,9 @@ router.post("/forgot-password", async (req, res) => {
 
   const mailerConfig = {
     service: "gmail",
-    auth: { user: GMAIL_CONFIG.user, pass: GMAIL_CONFIG.pass },
+    auth: { user: GMAIL_CONFIG.user, 
+            pass: GMAIL_CONFIG.pass 
+          },
   };
 
   let transporter = nodemailer.createTransport(mailerConfig);
@@ -139,7 +141,7 @@ router.post("/forgot-password", async (req, res) => {
   let message = {
     from: GMAIL_CONFIG.user,
     to: email,
-    subject: "[e-commerce API] Reset your password",
+    subject: "JaggerStore Reset your password",
     html: mail,
   };
   try {
