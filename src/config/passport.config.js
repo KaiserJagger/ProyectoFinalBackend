@@ -2,10 +2,11 @@ import passport from "passport";
 import local, { Strategy } from "passport-local";
 import UserModel from "../dao/models/user.model.js";
 import GithubModel from "../dao/models/gitgub.model.js";
-import GitHubStrategy from "passport-github2"; // traemos la strat
+import GitHubStrategy from "passport-github2";
+import Cart from "../dao/models/cart.model.js";
+import logger from "../utils/logger.js";
 import { createHash, isValidPassword } from "../utils/utils.js";
 import  { CLIENT_ID, CLIENT_SECRET, ADMIN_EMAIL }  from "./config.js";
-import Cart from "../dao/models/cart.model.js";
 
 const LocalStrategy = local.Strategy;
 
@@ -13,7 +14,7 @@ const Admin = async () => {
   const existingAdmin = await UserModel.findOne({ email: ADMIN_EMAIL });
 
   if (!existingAdmin) {
-    console.log("No registered admin users");
+    logger.warning("No registered admin users");
   }
 };
 
@@ -31,7 +32,7 @@ const initializePassport = () => {
           const user = await UserModel.findOne({ email: username });
 
           if (user) {
-            console.log("User already exists");
+            logger.warning("User already exists");
             return done(null, false);
           }
 
@@ -101,7 +102,7 @@ const initializePassport = () => {
         try {
           const user = await UserModel.findOne({ email: username });
           if (!user) {
-            console.log("The user entered does not exist");
+            logger.warning("The user entered does not exist");
             return done(null, false);
           }
 

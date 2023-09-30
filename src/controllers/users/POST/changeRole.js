@@ -3,6 +3,7 @@ import logger from "../../../utils/logger.js";
 
 export const changeRole = async (req, res) => {
   const { newRole } = req.body;
+  const userRole = req.role;
   try {
     const user = await UserModel.findById(req.user._id);
     if (!user) {
@@ -16,7 +17,11 @@ export const changeRole = async (req, res) => {
     user.role = newRole;
     await user.save();
     logger.info(`Changed role of user to ${newRole} - (${user.email})`);
-    res.redirect("/api/user");
+    if (userRole === "admin") {
+      return res.redirect("/api/users");
+    } else {
+      return res.redirect("/api/user");
+    }
   } catch (error) {
     console.error(error);
     res.render("errors/500");

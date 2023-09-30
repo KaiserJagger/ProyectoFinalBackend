@@ -1,4 +1,5 @@
 import productModel from "../../../dao/models/product.model.js";
+import logger from "../../../utils/logger.js";
 
 export const updateProduct = async (req, res) => {
   const productId = req.params.productId;
@@ -11,8 +12,8 @@ export const updateProduct = async (req, res) => {
       return res.status(404).render('errors/update-stock-error');
     }
 
-    if (updatedData.price <= 0) {
-      return res.status(404).render('errors/update-price-error');
+    if (updatedData.stock <= 0) {
+      return res.status(404).render("errors/update-price-error");
     }
 
     const updatedProduct = await productModel.findByIdAndUpdate(
@@ -26,8 +27,9 @@ export const updateProduct = async (req, res) => {
     }
     
     res.redirect(`/api/products/manager`);
-  } catch (error) {
-    console.error("Error updating product:", error);
+  } catch (err) {
+    logger.error(`Error updating product:
+      ${err.stack}`);
     res.status(500).send("Error updating product");
   }
 };

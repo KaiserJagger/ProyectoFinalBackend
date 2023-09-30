@@ -1,12 +1,12 @@
 import { Router } from "express";
 import passport from "passport";
+import mailgen from "mailgen";
+import nodemailer from "nodemailer";
 import logger from "../utils/logger.js";
 import UserModel from "../dao/models/user.model.js";
 import { createHash, generateRandomString } from "../utils/utils.js";
 import UserPasswordModel from "../dao/models/userPassword.model.js";
-import nodemailer from "nodemailer";
 import { GMAIL_CONFIG, PORT } from "../config/config.js";
-import mailgen from "mailgen";
 
 const router = Router();
 
@@ -37,11 +37,11 @@ router.get("/login", async (req, res) => {
 
 router.post(
   "/login",
-  passport.authenticate("login", { failureRedirect: "/api/session/login" }),
+  passport.authenticate("login", { failureRedirect: "/api/session/failLogin" }),
   async (req, res) => {
     if (!req.user) {
-      const errorMessage = "Invalid credentials";
-      return res.render("sessions/login", { error: errorMessage });
+      const errorMessage = "Credenciales inválidas. Verifique su correo y contraseña.";
+      return res.render("sessions/login", { message: errorMessage });
     }
     req.session.user = {
       first_name: req.user.first_name,
@@ -52,7 +52,9 @@ router.post(
 
     req.user.last_login = new Date();
     await req.user.save();
+    
     logger.info("Login success");
+
     res.redirect("/api/products");
   }
 );
@@ -60,7 +62,6 @@ router.post(
 router.get("/failLogin", async (req, res) => {
   res.send({ error: "Fail in login" });
 });
-
 
 router.get("/logout", async (req, res) => {
   req.session.destroy((err) => {
@@ -105,9 +106,7 @@ router.post("/forgot-password", async (req, res) => {
 
   const mailerConfig = {
     service: "gmail",
-    auth: { user: GMAIL_CONFIG.user, 
-            pass: GMAIL_CONFIG.pass 
-          },
+    auth: { user: GMAIL_CONFIG.user, pass: GMAIL_CONFIG.pass },
   };
 
   let transporter = nodemailer.createTransport(mailerConfig);
@@ -141,7 +140,7 @@ router.post("/forgot-password", async (req, res) => {
   let message = {
     from: GMAIL_CONFIG.user,
     to: email,
-    subject: "JaggerStore Reset your password",
+    subject: "[e-commerce API] Reset your password",
     html: mail,
   };
   try {
