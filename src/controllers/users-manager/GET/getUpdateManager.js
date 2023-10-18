@@ -1,7 +1,7 @@
-import UserModel from "../../../dao/models/user.model.js";
+// import UserModel from "../../../dao/models/user.model.js";
+// import e from "express";
 import logger from "../../../utils/logger.js";
 import { getUserById } from "../../../services/usersManager.service.js";
-import e from "express";
 
 export const updateUserRole = async (req, res) => {
   const userId = req.params.userId;

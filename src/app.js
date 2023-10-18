@@ -27,11 +27,12 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 const app = express();
-app.disable("x-powered-by");
-app.use(errorHandler);
 
 const publicDirectoryPath = path.join(__dirname, "public");
 app.use(express.static(publicDirectoryPath));
+
+app.disable("x-powered-by");
+app.use(errorHandler);
 
 const swaggerOptions = {
   definition: {
@@ -74,7 +75,6 @@ const ensureAuthenticated = (req, res, next) => {
   }
   res.redirect("/api/session/login");
 };
-
 
 app.use("/api/products", ensureAuthenticated, productsRouter);
 app.use("/api/carts", ensureAuthenticated, cartsRouter);

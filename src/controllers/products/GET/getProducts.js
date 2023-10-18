@@ -1,6 +1,7 @@
 import { getProductsService } from "../../../services/products.service.js";
 import logger from "../../../utils/logger.js";
 
+
 export const getProducts = async (req, res) => {
   const user = req.user;
   const page = parseInt(req.query.page) || 1;

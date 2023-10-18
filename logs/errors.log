@@ -91,3 +91,52 @@ info: Server Up on http://localhost:8080/api/products
 debug: DB production connected!
 info: Server Up on http://localhost:8080/api/products
 
+debug: DB production connected!
+info: Server Up on http://localhost:8080/api/products
+
+http: GET /api/products
+info: Logout success
+warning: The user entered does not exist
+warning: The user entered does not exist
+warning: The user entered does not exist
+warning: The user entered does not exist
+warning: The user entered does not exist
+info: Login success
+http: GET /api/products
+http: /api/users (admin dashboard) adminCoder@coder.com
+info: Admin (adminCoder@coder.com) deleted 2 inactive users.
+http: /api/users (admin dashboard) adminCoder@coder.com
+info: (Delete Account) Emails sent successfully
+info: (Delete Account) Emails sent successfully
+info: Login success
+http: GET /api/products
+http: GET /api/users
+http: GET /api/products
+info: Logout success
+debug: DB production connected!
+info: Server Up on http://localhost:8080/api/products
+
+debug: DB production connected!
+info: Server Up on http://localhost:8080/api/products
+
+debug: DB production connected!
+info: Server Up on http://localhost:8080/api/products
+
+debug: DB production connected!
+info: Server Up on http://localhost:8080/api/products
+
+debug: DB production connected!
+info: Server Up on http://localhost:8080/api/products
+
+debug: DB production connected!
+info: Server Up on http://localhost:8080/api/products
+
+debug: DB production connected!
+info: Server Up on http://localhost:8080/api/products
+
+debug: DB production connected!
+info: Server Up on http://localhost:8080/api/products
+
+debug: DB production connected!
+info: Server Up on http://localhost:8080/api/products
+
