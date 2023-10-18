@@ -1,8 +1,5 @@
 import logger from "../../../utils/logger.js";
-import {
-  getCartsService,
-  generateTicketService,
-} from "../../../services/carts.service.js";
+import {getCartsService, generateTicketService } from "../../../services/carts.service.js";
 
 export const getPurchase = async (req, res) => {
   try {
@@ -14,6 +11,14 @@ export const getPurchase = async (req, res) => {
       const errorMessage = "El carrito está vacío. Agregue productos antes de continuar.";
       return res.render("carts", { message: errorMessage });
     }
+
+     // Calcular el subtotal y total del carrito
+     let cartSubtotal = 0;
+     purchase.products.forEach(product => {
+       product.subtotal = product.quantity * product.productId.price;
+       cartSubtotal += product.subtotal;
+     });
+     const cartTotal = cartSubtotal; 
 
     const ticket = await generateTicketService(purchase, req.user.email);
 

@@ -54,31 +54,39 @@
 
   <!-- Lista de productos -->
   <div class="container mt-4">
-    {{#each products.docs}}
-      <div class="card mb-3">
-        <div class="card-body">
-          <h2 class="card-title">{{this.title}}</h2>
-          <p class="card-text">{{this.description}}</p>
-          <p class="card-text">{{this.category}}</p>
-          <p class="card-text">Stock: {{this.stock}}</p>
-          <h3 class="card-text">Price: $ {{this.price}}</h3>
-          <p class="card-text">Owner: {{this.owner}}</p>
+  {{#each products.docs}}
+    <div class="card mb-3">
+      <div class="row g-0">
+        <div class="col-md-8">
+          <div class="card-body">
+            <h2 class="card-title">{{this.title}}</h2>
+            <p class="card-text">{{this.description}}</p>
+            <p class="card-text">{{this.category}}</p>
+            <p class="card-text">Stock: {{this.stock}}</p>
+            <h3 class="card-text">Price: $ {{this.price}}</h3>
+            <p class="card-text">Owner: {{this.owner}}</p>
 
-          <!-- Formulario para agregar al carrito -->
-          <form action="/api/carts/add-to-cart" method="POST">
-            <input type="hidden" name="productId" value="{{this._id}}" />
-            <button class="btn btn-success" type="submit">Add to cart</button>
-          </form>
+            <!-- Formulario para agregar al carrito -->
+            <form action="/api/carts/add-to-cart" method="POST">
+              <input type="hidden" name="productId" value="{{this._id}}" />
+              <button class="btn btn-success" type="submit">Add to cart</button>
+            </form>
 
-          <!-- Formulario para eliminar del carrito -->
-          <form action="/api/carts/remove-from-cart" method="POST">
-            <input type="hidden" name="productId" value="{{this._id}}" />
-            <button class="btn btn-danger" type="submit">Remove from cart</button>
-          </form>
+            <!-- Formulario para eliminar del carrito -->
+            <form action="/api/carts/remove-from-cart" method="POST">
+              <input type="hidden" name="productId" value="{{this._id}}" />
+              <button class="btn btn-danger" type="submit">Remove from cart</button>
+            </form>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <img src="{{this.thumbnails}}" class="card-img" alt="Product Image" style="max-width: 100%;">
         </div>
       </div>
-    {{/each}}
-  </div>
+    </div>
+  {{/each}}
+</div>
+
 
   <!-- Paginación -->
   <div class="container mt-4">

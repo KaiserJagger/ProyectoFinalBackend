@@ -25,38 +25,58 @@
     </div>
     {{/if}}
 
-    {{#each cart}}
-    <div class="mt-3">
-      <h2>Cart ID: {{_id}}</h2>
-      <ul class="list-group">
-        {{#each products}}
-        <li class="list-group-item">
-          <h3>{{productId.title}}</h3>
-          <p>Product ID: {{productId._id}}</p>
-          <p>Quantity: {{quantity}}</p>
-          <p>Stock: {{productId.stock}}</p>
+  {{#each cart}}
+  <div class="mt-3">
+    <h2>Cart ID: {{_id}}</h2>
+    <ul class="list-group">
+      {{#each products}}
+      <li class="list-group-item">
+        <h3>{{productId.title}}</h3>
+        <p>Product ID: {{productId._id}}</p>
+        <p>Quantity: {{quantity}}</p>
+        <p>Stock: {{productId.stock}}</p>
+        <p>Precio: {{productId.price}}</p>
+      
+        <!-- Formulario para modificar la cantidad -->
+        <form action="/api/carts/update-quantity" method="POST" class="mb-2">
+          <input type="hidden" name="cartId" value="{{../_id}}">
+          <input type="hidden" name="productId" value="{{this.productId._id}}">
+          <div class="input-group">
+            <input type="number" name="quantity" value="{{this.quantity}}" class="form-control">
+            <button type="submit" class="btn btn-primary">Update quantity</button>
+          </div>
+        </form>
 
-          <!-- Formulario para modificar la cantidad -->
-          <form action="/api/carts/update-quantity" method="POST" class="mb-2">
-            <input type="hidden" name="cartId" value="{{../_id}}">
-            <input type="hidden" name="productId" value="{{this.productId._id}}">
-            <div class="input-group">
-              <input type="number" name="quantity" value="{{this.quantity}}" class="form-control">
-              <button type="submit" class="btn btn-primary">Update quantity</button>
-            </div>
-          </form>
+        
 
-          <!-- Formulario para eliminar el producto -->
-          <form action="/api/carts/remove-from-cart" method="POST">
-            <input type="hidden" name="cartId" value="{{../_id}}">
-            <input type="hidden" name="productId" value="{{this.productId._id}}">
-            <button type="submit" class="btn btn-danger">Remove product</button>
-          </form>
-        </li>
-        {{/each}}
-      </ul>
-    </div>
-    {{/each}}
+        <!-- Formulario para eliminar el producto -->
+        <form action="/api/carts/remove-from-cart" method="POST">
+          <input type="hidden" name="cartId" value="{{../_id}}">
+          <input type="hidden" name="productId" value="{{this.productId._id}}">
+          <button type="submit" class="btn btn-danger">Remove product</button>
+        </form>
+      </li>
+      {{/each}}
+    </ul>
+    
+    <!-- Mostrar el subtotal para el carrito actual -->
+    <p>Subtotal: $ {{cartSubtotal}}</p>
+
+    <!-- Formulario para eliminar el carrito -->
+    <form action="/api/carts/remove-cart" method="POST">
+      <input type="hidden" name="cartId" value="{{_id}}">
+      <button type="submit" class="btn btn-danger">Remove cart</button>
+    </form>
+  </div>
+{{/each}}
+
+<!-- Mostrar el total para el carrito completo -->
+<p>Total: $ {{cartTotal}}</p>
+
+<!-- Formulario para realizar la compra -->
+<form action="/api/carts/purchase" method="GET" class="mt-3">
+  <button type="submit" class="btn btn-success">Purchase</button>
+</form>
     
     <form action="/api/carts/purchase" method="GET" class="mt-3">
       <button type="submit" class="btn btn-success">Purchase</button>

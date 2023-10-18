@@ -140,3 +140,18 @@ info: Server Up on http://localhost:8080/api/products
 debug: DB production connected!
 info: Server Up on http://localhost:8080/api/products
 
+debug: DB production connected!
+info: Server Up on http://localhost:8080/api/products
+
+info: Login success
+info: Login success
+http: GET /api/products
+info: Login success
+http: GET /api/products
+http: GET /api/products
+http: GET /api/products
+http: GET /api/products
+debug: DB production connected!
+info: Server Up on http://localhost:8080/api/products
+
+http: GET /api/products

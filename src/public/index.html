@@ -7,24 +7,14 @@
 </head>
 <body>
   <div class="container">
-    <h1>Bienvenido al Backend</h1>
-    <p>Esta es la página de inicio pública del backend.</p>
-    <p>¡Inicie sesión o regístrese para acceder a más funcionalidades!</p>
+    <h1>JaggerStore</h1>
+    <p>Ventas de insumos informaticos.</p>
+    <p></p>
     <a class="btn btn-primary" href="/api/session/login">Iniciar Sesión</a>
     <a class="btn btn-success" href="/api/user/register">Registrarse</a>
   </div>
   <!-- Lista de productos -->
-  <div class="container mt-4">
-    {{#each products.docs}}
-      <div class="card mb-3">
-        <div class="card-body">
-          <h2 class="card-title">{{this.title}}</h2>
-          <p class="card-text">{{this.description}}</p>
-          <p class="card-text">{{this.category}}</p>
-          <p class="card-text">Stock: {{this.stock}}</p>
-          <h3 class="card-text">Price: $ {{this.price}}</h3>
-          <p class="card-text">Owner: {{this.owner}}</p>
-
+  
           <!-- Formulario para agregar al carrito -->
           <form action="/api/carts/add-to-cart" method="POST">
             <input type="hidden" name="productId" value="{{this._id}}" />
