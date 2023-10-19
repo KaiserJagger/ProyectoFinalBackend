@@ -1,34 +1,58 @@
-<!-- public.html -->
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>Página de Inicio Pública</title>
-  <!-- Incluye Bootstrap o cualquier otro estilo CSS según sea necesario -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Productos</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 </head>
 <body>
-  <div class="container">
-    <h1>JaggerStore</h1>
-    <p>Ventas de insumos informaticos.</p>
-    <p></p>
-    <a class="btn btn-primary" href="/api/session/login">Iniciar Sesión</a>
-    <a class="btn btn-success" href="/api/user/register">Registrarse</a>
-  </div>
-  <!-- Lista de productos -->
-  
-          <!-- Formulario para agregar al carrito -->
-          <form action="/api/carts/add-to-cart" method="POST">
-            <input type="hidden" name="productId" value="{{this._id}}" />
-            <button class="btn btn-success" type="submit">Add to cart</button>
-          </form>
-
-          <!-- Formulario para eliminar del carrito -->
-          <form action="/api/carts/remove-from-cart" method="POST">
-            <input type="hidden" name="productId" value="{{this._id}}" />
-            <button class="btn btn-danger" type="submit">Remove from cart</button>
-          </form>
+    <div class="container mt-4">
+        <!-- Encabezado con el logo y enlaces de inicio de sesión y registro -->
+        <div class="card mb-3">
+            <div class="card-body d-flex justify-content-between align-items-center">
+                <h1 class="navbar-brand">JaggerStore</h1>
+                <style>.navbar-brand {font-size: 36px;}</style>
+                <div>
+                    <a href="/login" class="btn btn-primary mr-2">Iniciar Sesión</a>
+                    <a href="/register" class="btn btn-success">Registrarse</a>
+                </div>
+            </div>
         </div>
-      </div>
-    {{/each}}
-  </div>
+        <div id="productList"></div>
+    </div>
+    <script>
+        // Cargar el archivo JSON de productos
+        fetch('./assets/data/products.json')
+            .then(response => response.json())
+            .then(data => {
+                const productList = document.getElementById('productList');
+                data.forEach(product => {
+                    productList.innerHTML += `
+                        <div class="card mb-3">
+                            <div class="row no-gutters">
+                                <div class="col-md-8">
+                                    <div class="card-body">
+                                        <h2 class="card-title">${product.title}</h2>
+                                        <p class="card-text">${product.description}</p>
+                                        <h3 class="card-text">Price: $${product.price}</h3>
+                                        <a href="/api/session/login/" class="btn btn-primary">Ver</a>
+                                        <a href="api/session/login/" class="btn btn-success">Agregar al Carrito</a>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <img src="${product.thumbnails}" class="card-img" alt="Producto">
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                });
+            })
+            .catch(error => console.error('Error al cargar productos: ' + error));
+    </script>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 </html>
