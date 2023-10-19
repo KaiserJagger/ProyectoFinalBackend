@@ -6,6 +6,9 @@ import logger from "../utils/logger.js";
 import UserModel from "../dao/models/user.model.js";
 import { CustomError } from "./errors/custom_errors.js";
 import EErros from "./errors/enums.js";
+import nodemailer from "nodemailer";
+import Mailgen from "mailgen";
+import { GMAIL_CONFIG } from "../config/config.js";
 
 export const getCartsService = async (userId) => {
   try {
@@ -150,6 +153,12 @@ export const generateTicketService = async (purchase, purchaserEmail) => {
       0
     );
 
+    const productsInfo = purchase.products.map((product) => ({
+      name: product.productId.title,
+      quantity: product.quantity,
+      price: product.productId.price,
+    }));
+
     const ticket = new ticketModel({
       amount: total,
       purchaser: purchaserEmail,
@@ -167,6 +176,49 @@ export const generateTicketService = async (purchase, purchaserEmail) => {
       { _id: purchase._id },
       { $set: { products: [] } }
     );
+
+    const transporter = nodemailer.createTransport({
+      service: "gmail",
+      auth: { user: GMAIL_CONFIG.user, pass: GMAIL_CONFIG.pass },
+    });
+
+    const mailGenerator = new Mailgen({
+      theme: "default",
+      product: {
+        name: "JaggerStore-Informatica",
+        link: "jaggerstore-production-c4a6.up.railway.app",
+      },
+    });
+
+    const email = {
+      body: {
+        name: purchaserEmail,
+        intro: "Your purchase receipt",
+        table: {
+          data: productsInfo.map((productInfo) => ({
+            item: `${productInfo.name} (Cantidad: ${productInfo.quantity})`,
+            description: `$${(productInfo.quantity * productInfo.price).toFixed(
+              2
+            )}`,
+          })),
+        },
+        outro: `
+        Total Amount: $${total.toFixed(2)}.\n
+        Thanks for shopping with us!\n
+        Need help, or have questions? Just reply to this email, we'd love to help`,
+      },
+    };
+
+    const emailBody = mailGenerator.generate(email);
+
+    const emailOptions = {
+      from: GMAIL_CONFIG.user,
+      to: purchaserEmail,
+      subject: "Purchase receipt",
+      html: emailBody,
+    };
+
+    await transporter.sendMail(emailOptions);
 
     return ticket.toObject();
   } catch (err) {
