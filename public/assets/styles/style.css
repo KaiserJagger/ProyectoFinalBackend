@@ -1,0 +1,50 @@
+
+    body {
+        font-family: 'Roboto', sans-serif;
+    }
+
+    .img{
+        width: 250px;
+    }
+
+    .navbar-brand {
+        font-size: 36px;
+    }
+
+    .card-title{
+        font-size: 40px;
+        font-weight: 400;
+    }
+
+    .card-text {
+        font-family:Verdana, Geneva, Tahoma, sans-serif;
+        font-size: 20px;
+        
+    }
+
+    .card-text-p{
+      font-size: 20px;
+        font-weight: 500 ;
+    }
+
+    .card {
+        border: 2px solid #000;
+        padding: 20px;
+    }
+    .p{
+        font-size: 20px;
+    }
+
+    .btn{
+        margin-left: 10px;
+        margin-top: 30px;
+    }
+
+    .btn-primary {
+        font-size: 15px;
+    }
+
+    .btn-success{
+        margin-left: 10px;
+        font-size:15px ;
+    }

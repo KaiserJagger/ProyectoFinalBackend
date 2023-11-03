@@ -12,7 +12,7 @@
   <div class="container mt-4">
     <h1>Sign up</h1>
 
-    <form action="/api/session/register" method="post">
+    <form action="/api/session/register" method="post" onsubmit="return validateForm()">
       <div class="mb-3">
         <label for="firstName" class="form-label">First Name:</label>
         <input type="text" class="form-control" id="firstName" name="first_name">
@@ -32,6 +32,10 @@
       <div class="mb-3">
         <label for="password" class="form-label">Password:</label>
         <input type="password" class="form-control" id="password" name="password">
+      </div>
+      <div class="mb-3">
+        <label for="confirmPassword" class="form-label">Confirm Password:</label>
+        <input type="password" class="form-control" id="confirmPassword" name="confirm_password">
       </div>
       <div class="mb-3">
         <label for="role" class="form-label">Role:</label>
@@ -54,5 +58,9 @@
   <!-- Incluye los scripts de Bootstrap y jQuery (si es necesario) -->
   <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.min.js"></script>
+  <script src="../../utils/utils.js"></script>
+  <script>
+  document.querySelector("form").onsubmit = validateForm;
+  </script>
 </body>
 </html>
