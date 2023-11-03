@@ -59,8 +59,10 @@ export const validateForm = () => {
   const confirmPassword = document.getElementById("confirmPassword").value;
 
   if (password !== confirmPassword) {
-    alert("Passwords do not match. Please make sure your passwords match.");
+    errorMessage.style.display = "block";
     return false; // Prevent form submission
+  } else {
+    errorMessage.style.display = "none";
   }
   return true; // Allow form submission
 }
