@@ -28,7 +28,7 @@ const __dirname = path.dirname(__filename);
 
 const app = express();
 
-const publicDirectoryPath = path.join(__dirname, "../public/index.html");
+const publicDirectoryPath = path.join(__dirname, "public");
 app.use(express.static(publicDirectoryPath));
 
 app.disable("x-powered-by");
