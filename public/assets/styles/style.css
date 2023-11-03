@@ -48,3 +48,16 @@
         margin-left: 10px;
         font-size:15px ;
     }
+
+
+    @media (min-width: 600px) {
+       .inicio{
+        margin-left: 200px;
+       }
+      }
+
+      @media (max-width: 1000px) {
+        .inicio{
+         margin-left: 100px;
+        }
+       }
