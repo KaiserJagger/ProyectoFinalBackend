@@ -10,37 +10,35 @@
 </head>
 <body>
   <div class="container mt-4">
-    <h1>Sign up</h1>
+    <h1>Register</h1>
 
     <form action="/api/session/register" method="post">
-      <div class="mb-3">
-        <label for="firstName" class="form-label">First Name:</label>
-        <input type="text" class="form-control" id="firstName" name="first_name">
-      </div>
-      <div class="mb-3">
-        <label for="lastName" class="form-label">Last Name:</label>
-        <input type="text" class="form-control" id="lastName" name="last_name">
-      </div>
-      <div class="mb-3">
-        <label for="email" class="form-label">Email:</label>
-        <input type="text" class="form-control" id="email" name="email">
-      </div>
-      <div class="mb-3">
-        <label for="age" class="form-label">Age:</label>
-        <input type="text" class="form-control" id="age" name="age">
-      </div>
-      <div class="mb-3">
-        <label for="password" class="form-label">Password:</label>
-        <input type="password" class="form-control" id="password" name="password">
-      </div>
-      <div class="mb-3">
-        <label for="role" class="form-label">Role:</label>
-        <select class="form-select" id="role" name="role">
-          <option value="user">User</option>
-          <option value="premium">Premium</option>
-        </select>
-      </div>
-      <button type="submit" class="btn btn-primary">Register</button>
+       <div class="form-group">
+                    <label for="first_name">Name</label>
+                    <input name="first_name" type="text" class="form-control" required pattern="^[A-Z][a-z]+( [A-Z][a-z]+)*$" title="Formato: Mmmmm Mmmmm">
+                    <div class="invalid"></div>
+                </div>
+                <div class="form-group">
+                    <label for="last_name">Lastname</label>
+                    <input name="last_name" type="text" class="form-control" required pattern="^[A-Z][a-z]+( [A-Z][a-z]+)*$" title="Formato: Mmmmm Mmmmm">
+                    <div class="invalid"></div>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input name="email" type="email" class="form-control" required>
+                    <div class="invalid" title="Correo electrónico es obligatório"></div>
+                </div>
+                <div class="form-group">
+                    <label for="age">Age</label>
+                    <input name="age" type="number" class="form-control" required title="Debe ser un numero entero mayor que 0">
+                    <div class="invalid" title="Debe ser un numero entero mayor que 0"></div>
+                </div>
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input name="password" type="password" class="form-control" required pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*_=+-]).{8,120}$" title="Debe tener al entre 8 y 120 caracteres, al menos una mayúscula, una minúscula y un caracter especial.">
+                    <div class="invalid" title="Debe tener al entre 8 y 120 caracteres, al menos una mayúscula, una minúscula y un caracter especial."></div>
+                </div>
+                <button type="submit" class="btn btn-primary">Send</button>
     </form>
   </div>
 

@@ -13,6 +13,7 @@ export const isValidPassword = (user, password) => {
   return bcrypt.compareSync(password, user.password);
 };
 
+
 export const generateProductsMocking = async () => {
   const existMocking = await MockingModel.countDocuments();
 
