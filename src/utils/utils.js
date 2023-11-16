@@ -54,3 +54,16 @@ export const generateRandomString = (num) => {
     .join("")
     .toUpperCase();
 };
+
+export const validateForm = () => {
+  const password = document.getElementById("password").value;
+  const confirmPassword = document.getElementById("confirmPassword").value;
+
+  if (password !== confirmPassword) {
+    errorMessage.style.display = "block";
+    return false; // Prevent form submission
+  } else {
+    errorMessage.style.display = "none";
+  }
+  return true; // Allow form submission
+}
