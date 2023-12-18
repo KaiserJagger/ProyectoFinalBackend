@@ -39,6 +39,35 @@ body {
     background-color: #fff; /* Color de fondo de las tarjetas */
 }
 
+.card-img {
+    width: 100%;
+    max-width: 100%; /* Ajusta el tamaño máximo de la imagen */
+    height: auto;
+    margin-bottom: 15px; /* Espacio inferior entre la imagen y el texto */
+}
+
+.card-title {
+    font-size: 28px; /* Ajusta el tamaño del título */
+    font-weight: 600; /* Ajusta el peso de la fuente */
+    margin-bottom: 10px;
+}
+
+.card-text {
+    font-size: 18px; /* Ajusta el tamaño del texto */
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    margin-bottom: 20px;
+}
+
+.card-text-p {
+    font-size: 22px; /* Ajusta el tamaño del precio */
+    font-weight: 600;
+    margin-bottom: 20px;
+}
+
+.card-btn {
+    margin-top: 10px; /* Espacio superior entre los botones */
+}
+
 .btn {
     font-size: 16px; /* Ajusta el tamaño de fuente de los botones */
     margin-top: 10px; /* Espacio superior entre los botones */
@@ -57,6 +86,13 @@ body {
 
 /*          --------------- RESPONSIVE --------------------            */
 
+@media (max-width: 768px) {
+    .card-img {
+        width: 100%;
+        margin-left: 0;
+    }
+}
+
 
 /* Media query para ajustar los márgenes de los botones en dispositivos móviles */
 @media (max-width: 600px) {
@@ -65,7 +101,6 @@ body {
         margin-top: 10px;
     }
 }
-
 
 @media (min-width: 600px) and (max-width: 1000px) {
 
@@ -80,7 +115,7 @@ body {
         margin-top: 10px;
     }
 
-    
+
     .card {
         border: 2px solid #000;
         border-radius: 10px; /* Agrega bordes redondeados */
@@ -106,12 +141,6 @@ body {
         font-weight: 600;
         margin-bottom: 20px;
     }
-
-    .card-img{
-        width: 40%;
-        margin-left: 20%;
-    }
-
 
     .card-btn{
         margin-left: 100px;

@@ -12,7 +12,6 @@
   <div class="container mt-4">
     <h1>Register</h1>
 
-<<<<<<< HEAD
     <form action="/api/session/register" method="post">
        <div class="form-group">
                     <label for="first_name">Name</label>
@@ -40,44 +39,6 @@
                     <div class="invalid" title="Debe tener al entre 8 y 120 caracteres, al menos una mayúscula, una minúscula y un caracter especial."></div>
                 </div>
                 <button type="submit" class="btn btn-primary">Send</button>
-=======
-    <form action="/api/session/register" method="post" onsubmit="return validateForm()">
-      <div class="mb-3">
-        <label for="firstName" class="form-label">First Name:</label>
-        <input type="text" class="form-control" id="firstName" name="first_name">
-      </div>
-      <div class="mb-3">
-        <label for="lastName" class="form-label">Last Name:</label>
-        <input type="text" class="form-control" id="lastName" name="last_name">
-      </div>
-      <div class="mb-3">
-        <label for="email" class="form-label">Email:</label>
-        <input type="text" class="form-control" id="email" name="email">
-      </div>
-      <div class="mb-3">
-        <label for="age" class="form-label">Age:</label>
-        <input type="text" class="form-control" id="age" name="age">
-      </div>
-      <div class="mb-3">
-        <label for="password" class="form-label">Password:</label>
-        <input type="password" class="form-control" id="password" name="password">
-      </div>
-      <div class="mb-3">
-        <label for="confirmPassword" class="form-label">Confirm Password:</label>
-        <input type="password" class="form-control" id="confirmPassword" name="confirm_password">
-      </div>
-      <div id="error-message" class="alert alert-danger" style="display: none;">
-      Passwords do not match. Please make sure your passwords match.
-    </div>
-      <div class="mb-3">
-        <label for="role" class="form-label">Role:</label>
-        <select class="form-select" id="role" name="role">
-          <option value="user">User</option>
-          <option value="premium">Premium</option>
-        </select>
-      </div>
-      <button type="submit" class="btn btn-primary">Register</button>
->>>>>>> e91a6689e6256d043a67dfb9b1c85f502f68a775
     </form>
   </div>
 
